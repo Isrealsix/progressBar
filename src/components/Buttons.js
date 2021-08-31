@@ -8,9 +8,10 @@ const Buttons = ({ status }) => {
 	const [backward, setBackward] = useState(true);
 	const [currentState, setCurrentState] = useState(0);
 	const statusContext = useContext(StatusContext);
+	const totalStage = statusContext.totalStage;
 
 	useEffect(() => {
-		if (currentState === status.length - 1) {
+		if (currentState === totalStage - 1) {
 			setForward(true);
 			setBackward(false);
 		}
@@ -20,19 +21,23 @@ const Buttons = ({ status }) => {
 			setForward(false);
 		}
 
-		if (currentState > 0 && currentState !== status.length - 1) {
+		if (currentState > 0 && currentState !== totalStage - 1) {
 			setBackward(false);
 			setForward(false);
 		}
-	}, [currentState, status.length]);
+	}, [currentState, totalStage]);
 
 	const update = type => {
 		if (type === 'forward') {
 			setCurrentState(prevState => (prevState += 1));
 			statusContext.widthHandler('forward');
+			statusContext.setStage(prevStage => (prevStage += 1));
+			statusContext.setPreviousStage(prevStage => (prevStage += 1));
 		} else {
 			setCurrentState(prevState => (prevState -= 1));
 			statusContext.widthHandler('backward');
+			statusContext.setStage(prevStage => (prevStage -= 1));
+			statusContext.setPreviousStage(prevStage => (prevStage -= 1));
 		}
 	};
 

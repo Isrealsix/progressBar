@@ -4,10 +4,19 @@ export const StatusContext = React.createContext({
 	progressWidth: 0,
 	widthHandler: type => {},
 	activeStates: () => {},
+	stage: 1,
+	previousStage: 0,
+	setPreviousStage: prevState => {},
+	totalStage: 0,
+	setTotalStage: total => {},
+	setStage: prevStage => {},
 });
 
 export const StatusContextProvider = props => {
 	const [progressWidth, setProgressWidth] = useState(0);
+	const [stage, setStage] = useState(1);
+	const [totalStage, setTotalStage] = useState(0);
+	const [previousStage, setPreviousStage] = useState(0);
 
 	useEffect(() => {}, []);
 
@@ -42,6 +51,12 @@ export const StatusContextProvider = props => {
 				progressWidth,
 				widthHandler,
 				activeStates,
+				stage,
+				setStage,
+				totalStage,
+				setTotalStage,
+				previousStage,
+				setPreviousStage,
 			}}
 		>
 			{props.children}
