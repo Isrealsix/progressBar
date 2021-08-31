@@ -9,7 +9,6 @@ const Status = () => {
 	const circleState = statusContext.activeStates();
 	return (
 		<div>
-			{console.log(circleState)}
 			<div className="status__container">
 				<div
 					className="status"
