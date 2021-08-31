@@ -1,0 +1,25 @@
+.btn {
+	background-color: #3498db;
+	border: none;
+	color: #fff;
+	padding: 0.8rem 3rem;
+	border-radius: 3rem;
+	margin-right: 2rem;
+	font-family: inherit;
+	font-size: 1.4rem;
+	cursor: pointer;
+	transition: 0.3s ease;
+
+	&:disabled {
+		cursor: not-allowed;
+		background-color: #e0e0e0;
+	}
+
+	&:focus {
+		outline: none;
+	}
+
+	:active {
+		transform: translateY(0.3rem) scale(0.98);
+	}
+}
