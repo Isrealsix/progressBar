@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 export const StatusContext = React.createContext({
 	progressWidth: 0,
 	widthHandler: type => {},
+	activeStates: () => {},
 });
 
 export const StatusContextProvider = props => {
@@ -18,11 +19,29 @@ export const StatusContextProvider = props => {
 		}
 	};
 
+	const activeStates = () => {
+		let status = null;
+		if (progressWidth === 0) {
+			status = 'design';
+		}
+
+		if (progressWidth === 50) {
+			status = 'deploy';
+		}
+
+		if (progressWidth === 100) {
+			status = 'lunch';
+		}
+
+		return status;
+	};
+
 	return (
 		<StatusContext.Provider
 			value={{
-				progressWidth: progressWidth,
+				progressWidth,
 				widthHandler,
+				activeStates,
 			}}
 		>
 			{props.children}
