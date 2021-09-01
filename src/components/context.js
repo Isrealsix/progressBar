@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+// Use the context API to handle some changes
 export const StatusContext = React.createContext({
 	progressWidth: 0,
 	widthHandler: type => {},

@@ -11,6 +11,7 @@ const Status = () => {
 	const stage = statusContext.stage;
 	const [totalStage, setTotalStage] = useState(2);
 	const [stages] = useState([
+		// values for the select drop down
 		{
 			label: '2',
 			value: '2',
@@ -37,6 +38,7 @@ const Status = () => {
 	const width = `${((progressCurrentStage - 1) / (totalStage - 1)) * 100}%`;
 
 	const updateStages = ev => {
+		// Update total stage & current stage
 		ev.preventDefault();
 		const value = +ev.target.value;
 		const refValue = +stageRef.current.value;
@@ -49,6 +51,7 @@ const Status = () => {
 		setSelectedStages(add(value));
 	};
 
+	// Push the dynamic selection to use everywhere
 	const add = value => {
 		const allStage = [];
 		if (value === 2) allStage.push({ label: value, value: value });
@@ -84,6 +87,7 @@ const Status = () => {
 
 			<Buttons />
 
+			{/* Display the Select Options */}
 			<select onChange={updateStages} ref={stageRef}>
 				{stages.map(item => (
 					<option key={item.value} value={item.value}>

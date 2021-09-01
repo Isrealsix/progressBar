@@ -14,6 +14,7 @@ const Buttons = ({ status }) => {
 	useEffect(() => {
 		// console.log(totalStage, currentState, 'of buttons');
 
+		// Conditions for enabling/disabling buttons
 		if (currentState <= 1) {
 			setForward(false);
 			setBackward(true);
