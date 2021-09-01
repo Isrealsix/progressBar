@@ -9,7 +9,6 @@ const Status = () => {
 	const progressCurrentStage = statusContext.stage;
 	const setProgressCurrentStage = statusContext.setStage;
 	const stage = statusContext.stage;
-	const previousStage = statusContext.previousStage;
 	const [totalStage, setTotalStage] = useState(2);
 	const [stages] = useState([
 		{
@@ -28,11 +27,8 @@ const Status = () => {
 		},
 	]);
 
-	console.log(totalStage);
-
 	useEffect(() => {
 		statusContext.setTotalStage(totalStage);
-		console.log(stage, totalStage);
 		if (stage > totalStage) {
 			setProgressCurrentStage(totalStage);
 		}
@@ -73,12 +69,6 @@ const Status = () => {
 				<div className="circle active">1</div>
 
 				{selectedStages.map(({ value }, idx, arr) => {
-					console.log(
-						'stages idx, Currstage progcurr',
-						idx,
-						stage,
-						progressCurrentStage
-					);
 					return (
 						<div
 							key={idx}

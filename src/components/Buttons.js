@@ -11,7 +11,6 @@ const Buttons = ({ status }) => {
 	const totalStage = statusContext.totalStage;
 
 	const currentState = statusContext.stage;
-	const active = currentState >= totalStage ? 'active' : '';
 	useEffect(() => {
 		// console.log(totalStage, currentState, 'of buttons');
 
