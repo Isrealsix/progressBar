@@ -1,4 +1,5 @@
 import { useState, useContext, useEffect, useRef } from 'react';
+import Select from './Select';
 import Buttons from './Buttons';
 import { StatusContext } from './context';
 import './Status.scss';
@@ -88,13 +89,8 @@ const Status = () => {
 			<Buttons />
 
 			{/* Display the Select Options */}
-			<select onChange={updateStages} ref={stageRef}>
-				{stages.map(item => (
-					<option key={item.value} value={item.value}>
-						{item.label}
-					</option>
-				))}
-			</select>
+
+			<Select updateStages={updateStages} stageRef={stageRef} stages={stages} />
 		</div>
 	);
 };
