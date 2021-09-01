@@ -6,35 +6,35 @@ import './Buttons.scss';
 const Buttons = ({ status }) => {
 	const [forward, setForward] = useState(false);
 	const [backward, setBackward] = useState(true);
-	const [currentState, setCurrentState] = useState(0);
+
 	const statusContext = useContext(StatusContext);
 	const totalStage = statusContext.totalStage;
 
+	const currentState = statusContext.stage;
 	useEffect(() => {
-		if (currentState === totalStage - 1) {
+		console.log(totalStage, currentState, 'of buttons');
+
+		if (currentState <= 1) {
+			setForward(false);
+			setBackward(true);
+		}
+
+		if (currentState < totalStage) {
+			setForward(false);
+		}
+
+		if (currentState === totalStage) {
 			setForward(true);
 			setBackward(false);
-		}
-
-		if (currentState === 1 || currentState === 0) {
-			setBackward(true);
-			setForward(false);
-		}
-
-		if (currentState > 0 && currentState !== totalStage - 1) {
-			setBackward(false);
-			setForward(false);
 		}
 	}, [currentState, totalStage]);
 
 	const update = type => {
 		if (type === 'forward') {
-			setCurrentState(prevState => (prevState += 1));
 			statusContext.widthHandler('forward');
 			statusContext.setStage(prevStage => (prevStage += 1));
 			statusContext.setPreviousStage(prevStage => (prevStage += 1));
 		} else {
-			setCurrentState(prevState => (prevState -= 1));
 			statusContext.widthHandler('backward');
 			statusContext.setStage(prevStage => (prevStage -= 1));
 			statusContext.setPreviousStage(prevStage => (prevStage -= 1));

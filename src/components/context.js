@@ -18,8 +18,6 @@ export const StatusContextProvider = props => {
 	const [totalStage, setTotalStage] = useState(0);
 	const [previousStage, setPreviousStage] = useState(0);
 
-	useEffect(() => {}, []);
-
 	const widthHandler = type => {
 		if (type === 'forward') {
 			setProgressWidth(prevState => (prevState += 50));
