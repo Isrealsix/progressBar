@@ -11,8 +11,9 @@ const Buttons = ({ status }) => {
 	const totalStage = statusContext.totalStage;
 
 	const currentState = statusContext.stage;
+	const active = currentState >= totalStage ? 'active' : '';
 	useEffect(() => {
-		console.log(totalStage, currentState, 'of buttons');
+		// console.log(totalStage, currentState, 'of buttons');
 
 		if (currentState <= 1) {
 			setForward(false);
@@ -21,6 +22,10 @@ const Buttons = ({ status }) => {
 
 		if (currentState < totalStage) {
 			setForward(false);
+		}
+
+		if (currentState > 1) {
+			setBackward(false);
 		}
 
 		if (currentState === totalStage) {

@@ -72,12 +72,18 @@ const Status = () => {
 
 				<div className="circle active">1</div>
 
-				{selectedStages.map(({ value }, idx) => {
+				{selectedStages.map(({ value }, idx, arr) => {
+					console.log(
+						'stages idx, Currstage progcurr',
+						idx,
+						stage,
+						progressCurrentStage
+					);
 					return (
 						<div
 							key={idx}
 							className={`circle ${
-								stage >= previousStage && stage >= 2 ? 'active' : ''
+								idx >= progressCurrentStage - 1 ? '' : 'active'
 							}`}
 						>
 							{value}
